@@ -28,7 +28,7 @@ airflow:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/configuration/airflow-configs.md
   config:
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
-    AIRFLOW__CORE__LOAD_EXAMPLES: "True"
+    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
 
   ## a list of users to create
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/security/airflow-users.md
@@ -104,7 +104,7 @@ airflow:
 ###################################
 scheduler:
   ## the number of scheduler Pods to run
-  replicas: 1
+  replicas: 2
 
   ## resource requests/limits for the scheduler Pods
   ## [SPEC] https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#resourcerequirements-v1-core
@@ -219,7 +219,7 @@ dags:
   ## configs for the git-sync sidecar
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/dags/load-dag-definitions.md
   gitSync:
-    enabled: false
+    enabled: true
 
 ###################################
 ## CONFIG | Kubernetes Ingress
@@ -273,7 +273,7 @@ postgresql:
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/database/embedded-database.md
   ## [WARNING] the embedded Postgres is NOT SUITABLE for production deployments of Airflow
   ## [WARNING] consider using an external database with `externalDatabase.*`
-  enabled: true
+  enabled: false
 
   ## configs for the PVC of postgresql
   persistence:
